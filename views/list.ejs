@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <iframe class="clock" src="https://free.timeanddate.com/clock/i8xhi5xj/n1720/fn3/fs20/tce4e9fd/pce4e9fd/ftb/tt0/tw0/tm1/ts1/tb4" frameborder="0" width="102" height="47"></iframe>
+ 
+
+    <div class="box" id="heading">
+        <h1> <%= kindOfDay %> </h1>
+    </div>
+    <div class="box">
+        <% newListItems.forEach(function(item){ %>
+            <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+                <p> <%=item.name%></p>
+            </div>
+            <input type="hidden" name="listName" value="<%=kindOfDay%>">
+            </form>
+        <% } )%>
+        
+    </div>
+   
+    <div class="box">
+        <form class="item" action="/" method="post">
+
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            
+            <button type="submit" name="button" value="<%=kindOfDay%>">+</button>
+
+        </form>
+    </div>
+    
+</body>
+</html>
